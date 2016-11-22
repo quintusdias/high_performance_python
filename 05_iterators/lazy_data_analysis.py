@@ -57,20 +57,20 @@ def rolling_window_grouper(data, window_size):
 
 
 if __name__ == "__main__":
-    print "Using day_grouper:"
+    print("Using day_grouper:")
     data = read_fake_data("fake_filename")
     data_day = day_grouper(data)
     anomalous_dates = ifilter(None, imap(check_anomaly, data_day))
     first_anomalous_date = anomalous_dates.next()
-    print "The first anomalous date is: ", first_anomalous_date
+    print("The first anomalous date is: ", first_anomalous_date)
     next_10_dates = islice(anomalous_dates, 10)
-    print "The next 10 anomalous dates are: ", list(next_10_dates)
+    print("The next 10 anomalous dates are: ", list(next_10_dates))
 
-    print "Using rolling_window_grouper:"
+    print("Using rolling_window_grouper:")
     data = read_fake_data("fake_filename")
     data_day = rolling_window_grouper(data, window_size=86400)
     anomalous_dates = ifilter(None, imap(check_anomaly, data_day))
     first_anomalous_date = anomalous_dates.next()
-    print "The first anomalous date is: ", first_anomalous_date
+    print("The first anomalous date is: ", first_anomalous_date)
     next_10_dates = islice(anomalous_dates, 10)
-    print "The next 10 anomalous dates are: ", list(next_10_dates)
+    print("The next 10 anomalous dates are: ", list(next_10_dates))
